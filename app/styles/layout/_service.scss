@@ -1,0 +1,88 @@
+.service {
+  padding: 11rem 0 12rem;
+  &-info {
+    width: calc(100% - 9.5rem);
+    height: 100%;
+    @include flexBox(flex-start, space-between, column);
+  }
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6.5rem;
+    padding-right: 2.5rem;
+  }
+  &-item {
+    width: calc(33.33% - 2.7rem);
+    display: flex;
+  }
+  &-list:not(:last-child) {
+    border-bottom: 1px solid rgb(216, 216, 216);
+    padding-bottom: 5rem;
+  }
+
+  &-icon {
+    margin: 0 3rem;
+    @include size(30px, 30px);
+  }
+  &-title {
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.4rem;
+    @include textClamp(1);
+  }
+  &-description {
+    font-family: $secondary-font;
+    color: $text-color;
+    line-height: 1.6;
+    font-weight: 300;
+    @include textClamp(2);
+  }
+  // apply css grid
+  // @include minWidth(1024px) {
+  //   &-list {
+  //     display: grid;
+  //     grid-template-columns: 1fr 1fr 1fr;
+  //     grid-template-columns: repeat(3, 1fr);
+  //     grid-gap: 0 40px;
+  //   }
+  //   &-item {
+  //     width: auto;
+  //   }
+  // }
+  @include maxWidth(1023px) {
+    &-list {
+      display: block;
+    }
+    &-item {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+  @include maxWidth(767px) {
+    padding: 5rem 0;
+    &-list:not(:first-of-type) {
+      margin-top: 0;
+    }
+    &-list:not(:last-of-type) {
+      padding-bottom: 0;
+      border: none;
+    }
+    &-item {
+      border-bottom: 1px solid #cccccc;
+      padding-bottom: 1rem;
+      justify-content: space-evenly;
+    }
+    &-item:nth-last-child(1) {
+      border: none;
+    }
+    &-icon {
+      margin-left: 0;
+    }
+    &-title {
+      margin-bottom: 0.8rem;
+    }
+  }
+}
+
+// 80 / 3 = 27

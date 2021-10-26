@@ -1,0 +1,122 @@
+.quote {
+  background-color: $gray-color;
+  padding: 6.5rem 0;
+  &-container {
+    @include flexBox(center, space-between);
+  }
+  // &-arrow-right,
+  // &-arrow-left {
+  //   color: $gray-dark-color;
+  //   cursor: pointer;
+  //   font-size: 2rem;
+  //   padding: 1rem 2rem;
+  //   font-size: 3rem;
+  // }
+  &-content {
+    padding: 0 5.5rem;
+    @include flexBox(center, space-between);
+  }
+  &-icon {
+    @include size(15rem, 15rem);
+    @include flexBox(center, center);
+    border: 3px solid $third-color;
+    // k bị thu lại bởi flex
+    flex-shrink: 0;
+    margin-right: 6rem;
+  }
+  &-image {
+    @include size(22rem, 22rem);
+    object-fit: cover;
+    border-radius: 100rem;
+    flex-shrink: 0;
+    margin-right: 3rem;
+  }
+  // &-info {
+  //   padding-left: 6rem;
+  // }
+  &-desc {
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+    font-family: $secondary-font;
+    font-style: italic;
+    color: $text-color;
+    @include textClamp(3);
+  }
+  &-author {
+    font-size: 2.4rem;
+    color: $title-color;
+    font-family: $third-font;
+    position: relative;
+    padding-left: 7rem;
+  }
+  &-author::before {
+    content: "";
+    @include size(6rem, 0.4rem);
+    background-color: $primary-color;
+    @include absoluteCenter("top");
+    left: 0;
+  }
+
+  // Slick slider
+  .slick-initialized .slick-slide {
+    display: flex;
+  }
+  .slick-arrow {
+    z-index: 200;
+    background-color: transparent;
+    border: 0;
+    color: $gray-dark-color;
+    cursor: pointer;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    font-size: 3rem;
+    @include absoluteCenter("top");
+  }
+
+  .slick-prev {
+    left: 0;
+  }
+  .slick-next {
+    right: 0;
+  }
+
+  @include maxWidth(767px) {
+    padding: 2rem;
+    &-arrow-right,
+    &-arrow-left {
+      display: none;
+    }
+    &-content {
+      padding: 0;
+      flex-direction: column;
+    }
+    &-info {
+      padding: 0;
+    }
+    &-desc {
+      font-size: 1.7rem;
+      margin-top: 1rem;
+      display: block;
+    }
+    &-author {
+      text-align: right;
+      display: block;
+      &::before {
+        text-align: right;
+      }
+    }
+    &-icon {
+      @include size(8rem, 8rem);
+      margin-right: 0;
+      & img {
+        max-width: 50%;
+      }
+    }
+    &-image {
+      @include size(10rem, 10rem);
+      margin-right: 0;
+    }
+  }
+}

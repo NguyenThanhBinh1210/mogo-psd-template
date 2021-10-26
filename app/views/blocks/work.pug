@@ -1,0 +1,59 @@
+section.work 
+  .container 
+    +blockBox('What we do','some of our work','Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero excepturi porro quidem dolorum dignissimos culpa, sint vel, exercitationem sit distinctio nemo dolore veritatis aliquam alias animi tempore saepe magni neque?')
+  .work-grid 
+    +workItem('../images/img-work1.png')
+    +workItem('../images/img-work3.png')
+    +workItem('../images/img-work2.png')
+    +workItem('../images/img-work4.png')   
+    +workItem('../images/img-work5.png', true)
+    +workItem('../images/img-work6.png')
+    +workItem('../images/img-work7.png')
+
+  //- .work-list 
+    .work-column 
+      .work-item
+        img.work-image(src="../images/img-work1.png", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light Lorem ipsum dolor sit 
+      .work-item
+        img.work-image(src="../images/img-work2.png", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light Lorem ipsum dolor sit 
+    .work-column 
+      .work-item
+        img.work-image(src="../images/img-work1.png", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light Lorem ipsum dolor sit 
+      .work-item
+        img.work-image(src="../images/img-work2.png", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light Lorem ipsum dolor sit 
+    .work-column 
+      .work-item.work-item--full
+        img.work-image(src="../images/img-work5.png", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light lorem ipsum dolor sit 
+    .work-column 
+      .work-item
+        img.work-image(src="../images/img-work1.png", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light Lorem ipsum dolor sit 
+      .work-item
+        img.work-image(src="https://images.unsplash.com/photo-1633014332834-c94559ff5439?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80", alt="")
+        .work-content 
+          i.far.fa-image
+          h3.work-title creatively designed
+          span.work-desc.text.text--light Lorem ipsum dolor sit 

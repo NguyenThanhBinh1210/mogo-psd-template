@@ -1,0 +1,118 @@
+.work {
+  padding-top: 10rem;
+  &-list {
+    @include flexBox(stretch, flex-start);
+    height: 78rem;
+  }
+  &-column {
+    width: 25%;
+  }
+  &-content {
+    color: white;
+    i {
+      font-size: 3rem;
+    }
+  }
+  &-title {
+    text-transform: uppercase;
+    margin: 1.7rem 0;
+  }
+  &-image {
+    @include size(100%, 100%);
+    object-fit: cover;
+  }
+  &-item {
+    height: 50%;
+  }
+  &-item--full {
+    height: 100%;
+  }
+  @include maxWidth(1600px) {
+    &-list {
+      height: 60rem;
+    }
+  }
+  @include maxWidth(1279px) {
+    &-list {
+      flex-wrap: wrap;
+    }
+    &-column {
+      width: 50%;
+      height: 84rem;
+    }
+    &-item {
+      height: 42rem;
+    }
+    &-item--full {
+      height: 100%;
+    }
+  }
+  @include maxWidth(767px) {
+    padding: 5rem 0;
+    &-column {
+      width: 100%;
+      height: auto;
+    }
+    &-item,
+    &-item--full {
+      height: auto;
+    }
+  }
+}
+
+.work-grid {
+  display: grid;
+  // Chia lam 4 cot bang nhau
+  grid-template-columns: repeat(4, 1fr);
+  // Chia lam 2 hang bang nhau
+  grid-template-rows: 33rem 33rem;
+  grid-template-areas:
+    "h1 h3 h5 h6"
+    "h2 h4 h5 h7";
+  .work-item {
+    height: 33rem;
+    // height: 100% !important;
+    &:first-child {
+      grid-area: h1;
+    }
+    &:nth-child(2) {
+      grid-area: h2;
+    }
+    &:nth-child(3) {
+      grid-area: h3;
+    }
+    &:nth-child(4) {
+      grid-area: h4;
+    }
+    &:nth-child(5) {
+      height: 100%;
+      grid-area: h5;
+    }
+    &:nth-child(6) {
+      grid-area: h6;
+    }
+    &:last-child {
+      grid-area: h7;
+    }
+  }
+  @include maxWidth(1279px) {
+    grid-template-rows: 27rem 27rem;
+    .work-item {
+      height: 27rem;
+    }
+  }
+  @include maxWidth(1047px) {
+    grid-template-rows: 20rem 20rem;
+    .work-item {
+      height: 20rem;
+    }
+  }
+  @include maxWidth(767px) {
+    display: block;
+    .work-item {
+      height: auto;
+    }
+  }
+}
+
+@include hoverEffect(".work-item", ".work-content", "false");

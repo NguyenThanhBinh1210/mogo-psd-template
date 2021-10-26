@@ -1,0 +1,169 @@
+// width height
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin absoluteCenter($direction, $position: absolute) {
+  position: $position;
+  @if $direction == "left" {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @if $direction == "top" {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @if $direction == "both" {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin maxWidth($breakpoint) {
+  @media screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin minWidth($breakpoint) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin hideScroll() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin textClamp($row: 1, $width: 100%) {
+  display: -webkit-box;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: $width;
+  // height: $height;
+  white-space: pre-wrap;
+  // word-break: break-all;
+  word-break: break-word;
+}
+
+@mixin flexBox(
+  $alignItems: stretch,
+  $justifyContent: flex-start,
+  $flexDirection: row,
+  $flex: flex,
+  $wrap: nowrap
+) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  flex-direction: $flexDirection;
+  flex: $flex;
+  flex-wrap: $wrap;
+}
+
+@mixin touchSlider($width: 80%, $gap: 2.5rem, $padding: 1rem) {
+  display: grid !important;
+  grid-auto-columns: $width !important;
+  grid-auto-flow: column;
+  grid-template-columns: unset;
+  grid-column-gap: $gap;
+  overflow-x: auto;
+  padding: $padding;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  @include hideScroll;
+
+  & > * {
+    scroll-snap-align: start;
+    width: auto;
+  }
+}
+
+@mixin hiddens($hidden: "true") {
+  @if $hidden == "true" {
+    opacity: 0;
+    visibility: hidden;
+  } @else {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@mixin absoluteFull(
+  $position: absolute,
+  $top: 0,
+  $bottom: 0,
+  $left: 0,
+  $right: 0
+) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+
+@mixin hoverEffect($itemClass, $contentClass, $transform: "true") {
+  #{$itemClass} {
+    position: relative;
+    z-index: 1;
+    transition: linear 0.25s;
+    cursor: pointer;
+    #{$contentClass} {
+      @include hiddens("true");
+      @include absoluteFull;
+      @include flexBox(center, center, column);
+      transition: all 0.25s linear;
+      background: linear-gradient(
+        to bottom,
+        rgba($primary-color, 0.8),
+        rgba($secondary-color, 0.8)
+      );
+      z-index: 2;
+    }
+    @if $transform == "true" {
+      &:hover {
+        transform: translate(-10px, -10px);
+        box-shadow: 10px 10px 0 0 $third-color;
+      }
+    }
+    &:hover {
+      #{$contentClass} {
+        @include hiddens("false");
+      }
+    }
+  }
+}
+
+@mixin flexBox2($conf: ()) {
+  // $alignItems: stretch,
+  // $justifyContent: flex-start,
+  // $flexDirection: row,
+  // $flex: flex,
+  // $wrap: nowrap
+  $conf: extend(
+    (
+      align-items: stretch,
+      justify-content: flex-start,
+      flex-direction: row,
+      display: flex,
+      flex-wrap: nowrap,
+    ),
+    $conf
+  );
+  display: map-get($conf, display);
+  align-items: map-get($conf, align-items);
+  justify-content: map-get($conf, justify-content);
+  flex-direction: map-get($conf, flex-direction);
+  flex-wrap: map-get($conf, flex-wrap);
+}

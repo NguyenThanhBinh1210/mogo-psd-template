@@ -1,0 +1,120 @@
+mixin menuLink(title, href= '#')
+  li.header-menu-item 
+    a.header-menu-link(href= href)= title  
+
+mixin headerBottom(number, text)
+  .header-bottom-item
+    span.header-bottom-number= number
+    span.header-bottom-text= text
+
+mixin blockBox(caption, title, description)
+  .block-box
+    h3.block-box-caption= caption
+    h2.block-box-title= title
+    if description 
+      p.block-box-description= description
+
+mixin aboutItem(data) 
+  .about-item 
+    img.about-image(src= data.src, alt= data.alt)
+    .about-content
+      i.about-icon(class= data.iconClass)
+      span.about-title= data.title
+
+mixin wedoItem(src, title, iconDown, description, isActive='') 
+  .wedo-item(class= isActive)
+    .wedo-item-header 
+      img(src= src).wedo-item-icon
+      h3.wedo-item-title= title
+      i.wedo-item-arrow(class= iconDown)
+      i.wedo-item-arrow2.fal.fa-angle-up
+    .wedo-item-content
+      .wedo-item-text= description
+
+mixin numberItem(data)
+  .number-item 
+    h4.number-item-count= data.number
+    span.number-item-text= data.text
+
+mixin serviceItem(src , alt= '', title, description)
+  .service-item
+    img.service-icon(src= src, alt=alt)
+    .service-info
+      .service-title= title
+      .service-description= description
+
+mixin teamItem(src , name, desc, href='') 
+  .team-item
+    .team-main 
+      .team-image 
+        img(src= src, alt="")
+      .team-content
+        ul.team-social
+          li.team-social-item
+            a.team-social-link(href= href) 
+              i.fab.fa-facebook-f
+          li.team-social-item
+            a.team-social-link(href= href) 
+              i.fab.fa-twitter
+          li.team-social-item
+            a.team-social-link(href= href) 
+              i.fab.fa-pinterest
+          li.team-social-item
+            a.team-social-link(href= href) 
+              i.fab.fa-instagram
+    .team-info 
+      h3.team-name= name
+      span.team-desc= desc
+
+mixin peopleItem(src,name,job='Graphic design',desc='Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim odit mollitia dolores, autem culpa, soluta, accusantium esse a amet inventore error nam perspiciatis optio quisquam adipisci? Sint aspernatur molestias iure!') 
+  li.people-item 
+    img.people-avatar(src= src)
+    .people-info 
+      h3.people-name= name
+      span.people-job.text.text--light= job
+      p.people-desc.text= desc
+
+mixin storyItem( src= '../images/img-blog1.png', number= 15, text= "Jan", title='Lorem ipsum dolor sit amet ', desc='Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit ex facere laudantium ipsa et dignissimos. Possimus recusandae fugiat consequuntur voluptatibus eaque totam ab.', view= 1000, cmt= 100) 
+  li.story-item 
+    .story-media 
+      img.story-image(src=src, alt="")
+      .story-date 
+        span.story-date-number= number
+        span.story-date-text.text.text--light= text
+    h3.story-title= title
+    .story-desc 
+      p.story-desc-inner= desc
+    .story-meta
+      .story-meta-item 
+        i.fa.fa-eye.story-meta-icon
+        span.story-meta-number.text.text--light= view
+      .story-meta-item 
+        i.fa.fa-comment.story-meta-icon
+        span.story-meta-number.text.text--light= cmt
+
+mixin quocItem( src='../images/img-quote.png', type = false, desc= 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, eiuminus itaque distinctio cumque sapiente? Asperiores dignissimos commodi repellasapiente unde non. Aperiam expedita sapiente officiis, soluta magni fugiavoluptatibus.Aperiam expedita sapiente officiis, soluta magni fugiat voluptatibus.', author="Joshua Earle") 
+  .quote-content 
+    if type == false
+      .quote-icon
+        img(src=src)
+    else  
+      img(src= src).quote-image
+    .quote-info 
+      p.quote-desc= desc
+      span.quote-author= author
+
+mixin workItem(src,  type = false ,  title='creatively designed', desc='Lorem ipsum dolor sit ')
+  if type == false
+    .work-item
+      img.work-image(src= src)
+      .work-content 
+        img(src= '../images/img-work-icon.png')
+        h3.work-title= title
+        span.work-desc.text.text--light= desc
+  else 
+    .work-item.work-item--full
+      img.work-image(src= src)
+      .work-content 
+        img(src= '../images/img-work-icon.png')
+        h3.work-title= title
+        span.work-desc.text.text--light= desc

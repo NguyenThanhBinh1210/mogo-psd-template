@@ -1,0 +1,100 @@
+.team {
+  padding: 10rem 0;
+  &-list {
+    @include flexBox(stretch, space-between);
+  }
+  &-item {
+    width: calc(33.33% - 2rem);
+  }
+  &-image {
+    @include size(100%, 47rem);
+    object-fit: cover;
+    img {
+      height: 100%;
+    }
+  }
+  &-info {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    height: calc(100% - 47rem);
+    @include flexBox(center, space-between, column);
+  }
+  &-name {
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    line-height: 2.4;
+    @include textClamp(1);
+  }
+  &-desc {
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: $text-color;
+  }
+  &-social {
+    @include flexBox(center, center);
+    &-item:not(:first-child) {
+      border-left: 1px solid $primary-color;
+    }
+    &-link {
+      @include flexBox(center, center);
+      @include size(6rem, 6rem);
+      font-size: 2rem;
+      color: $primary-color;
+      background-color: $secondary-color;
+      transition: all 0.25s linear;
+      &:hover {
+        color: white;
+        background-color: $primary-color;
+      }
+    }
+  }
+  @include maxWidth(1025px) {
+    &-image {
+      height: 39rem;
+    }
+    &-info {
+      height: calc(100% - 40rem);
+    }
+  }
+
+  @include maxWidth(1023px) {
+    padding: 5rem 0;
+    &-list {
+      @include touchSlider(55%);
+    }
+    &-image {
+      height: 45rem;
+      img {
+        width: 100%;
+      }
+    }
+    .team-info {
+      height: calc(100% - 46rem);
+    }
+  }
+  @include maxWidth(767px) {
+    padding-bottom: 0;
+    &-image {
+      height: 22rem;
+    }
+    .team-info {
+      height: calc(100% - 23rem);
+      padding: 1rem 1.5rem;
+    }
+    .team-social-link {
+      height: 4rem;
+      width: 4rem;
+    }
+  }
+}
+
+.brand {
+  background-color: $gray-color;
+  padding: 6.6rem 1rem;
+  @include maxWidth(767px) {
+    padding: 3rem 1rem;
+  }
+}
+@include hoverEffect(".team-main", ".team-content");
